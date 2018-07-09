@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/present_musicitem"
+    android:orientation="horizontal">
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:id="@+id/present_musicitem_songname"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:maxLength="8"
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/colorLwhile"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:id="@+id/present_musicitem_songartist"
+        android:gravity="center"
+        android:textSize="15dp"
+        android:maxLength="12"
+        android:layout_toRightOf="@id/present_musicitem_songname"
+        android:textColor="@color/colorLwhile"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:id="@+id/present_musicitem_delectmusic"
+        android:src="@drawable/current_playlist_clear"
+        android:layout_gravity="center"
+       android:layout_toLeftOf="@id/emply"
+        android:focusable="false"
+        />
+    <TextView
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/emply"
+        android:layout_alignParentRight="true"/>
+</RelativeLayout>

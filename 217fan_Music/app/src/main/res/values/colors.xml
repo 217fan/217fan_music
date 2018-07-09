@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorQBlack">#c01b1919</color>
+    <color name="colorSblack">#333333</color>
+    <color name="colorAwhile">#c1e8ecec</color>
+    <color name="colorLwhile">#FFF</color>
+    <color name="colorblue">#16BC5C</color>
+</resources>
