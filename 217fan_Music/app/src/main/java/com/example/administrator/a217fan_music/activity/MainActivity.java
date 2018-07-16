@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -36,6 +37,8 @@ import android.widget.Toast;
 import com.example.administrator.a217fan_music.R;
 import com.example.administrator.a217fan_music.adapter.PresentMusicItemAdapter;
 import com.example.administrator.a217fan_music.bean.Music;
+import com.example.administrator.a217fan_music.fragment.LineMusic_Main;
+import com.example.administrator.a217fan_music.fragment.LineMusic_State_1;
 import com.example.administrator.a217fan_music.fragment.LocalMusicContent;
 import com.example.administrator.a217fan_music.fragment.MainLocalMusic;
 import com.example.administrator.a217fan_music.fragment.PlayingFragment;
@@ -55,11 +58,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG ="MainActivity" ;
     private static boolean isplaying=false;
     android.support.v4.app.FragmentManager fragmentManager;
+    LineMusic_Main lineMusic_main;
     MainLocalMusic mainLocalMusic;
-    PlayingFragment playingFragment;
-    LocalMusicContent localMusicContent;
     List<Music> list;
     CRUDdb cruddb;
+    TextView activitySerch;
     ImageView playArea_play;
     ImageView playArea_playlist;
     TextView playArea_songname;
@@ -75,6 +78,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
       super.onCreate(savedInstanceState);
         Log.w(TAG, "onCreate: oCreate执行了" );
       setContentView(R.layout.activity_main);
+      activitySerch=(TextView) findViewById(R.id.activity_main_search);
+      activitySerch.setVisibility(View.VISIBLE);
       playArea_play=(ImageView)findViewById(R.id.playArea_play);
       playArea_playlist=(ImageView)findViewById(R.id.playArea_playlist);
       playArea_songname=(TextView)findViewById(R.id.activity_playArea_song_name);
@@ -104,6 +109,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onResume() {
         Log.w(TAG, "onResume: onResume执行了" );
         super.onResume();
+        lineMusic_main=new LineMusic_Main();
+
+        activitySerch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              fragmentManager.beginTransaction().replace(R.id.activity_main_fragment,lineMusic_main).addToBackStack(null).commit();
+              activitySerch.setVisibility(View.GONE);
+            }
+        });
         playArea_play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -236,11 +250,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Music music=new Music();
                 music=list.get(position);
-                /*MessageEvent messageEvent=new MessageEvent();
+                MessageEvent messageEvent=new MessageEvent();
                 messageEvent.setSongartist(music.artist);
                 messageEvent.setSongname(music.name);
                 messageEvent.setIsplaying(true);
-                EventBus.getDefault().post(messageEvent);*/
+                EventBus.getDefault().post(messageEvent);
+                musicService.resetMediaplay();
                 musicService.setMusic(music);
                 musicService.play();
             }
@@ -335,15 +350,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 messageEvent.setSongname(playArea_songname.getText().toString());
                 messageEvent.setSongartist(playArea_songartist.getText().toString());
                EventBus.getDefault().post(messageEvent);
-              /*  if(isplaying){
-                    isplaying=false;
-                    playingPlay.setImageResource(R.drawable.landscape_player_btn_play_normal);
-                    musicService.pause();
-                }else {
-                    isplaying=true;
-                    playingPlay.setImageResource(R.drawable.landscape_player_btn_pause_normal);
-                    musicService.play();
-                }*/
                 break;
             case R.id.playing_playlist:
                 showPopupWindowPlaylist();
@@ -375,6 +381,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     musicService.play();
                 }
                 break;
+
+            case R.id.activity_main_search:
 
         }
 

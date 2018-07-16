@@ -7,7 +7,7 @@
     tools:context=".fragment.PlayingFragment">
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:id="@+id/playing_songName"
         android:text="歌曲名字"
         android:textSize="25dp"

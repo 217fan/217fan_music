@@ -20,7 +20,7 @@ public class Music extends DataSupport {
     public void setState(String state) {
         this.state = state;
     }
-
+    public String line_songId;
     public String state;
     public long duration;
     public long playedtime;

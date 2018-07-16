@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.administrator.a217fan_music.R;
 
@@ -21,7 +22,7 @@ public class MainLocalMusic extends Fragment implements View.OnClickListener{
     ImageView localmusic;
     ImageView dowmmusic;
     ImageView isfavorite;
-
+    TextView activitySearch;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +42,8 @@ public class MainLocalMusic extends Fragment implements View.OnClickListener{
          isfavorite=(ImageView)view.findViewById(R.id.activity_main_isfavorite_picture);
          dowmmusic.setOnClickListener(this);
          isfavorite.setOnClickListener(this);
+         activitySearch=(TextView)getActivity().findViewById(R.id.activity_main_search);
+         activitySearch.setVisibility(View.VISIBLE);
         return view;
     }
 
@@ -62,6 +65,7 @@ public class MainLocalMusic extends Fragment implements View.OnClickListener{
             case R.id.activity_main_localmusic_picture:
 
                     fragmentTransaction.replace(R.id.activity_main_fragment,localMusicContent).addToBackStack(null).commit();
+
                     Log.w("本地按钮", "onClick: " );
                     break;
 

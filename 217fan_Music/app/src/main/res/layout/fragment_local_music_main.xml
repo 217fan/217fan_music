@@ -6,13 +6,18 @@
     tools:context=".fragment.MainLocalMusic"
     android:layout_gravity="center"
     android:id="@+id/activity_main_localmusic">
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/emply_textview"
+        android:layout_alignParentTop="true"
+        />
     <ImageView
         android:id="@+id/activity_main_localmusic_picture"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/emply_textview"
         android:src="@drawable/mymusic_icon_allsongs_normal"
         android:layout_marginLeft="38dp"
        />
@@ -23,6 +28,7 @@
         android:src="@drawable/mymusic_icon_download_highlight"
         android:layout_toRightOf="@id/activity_main_localmusic_picture"
         android:layout_marginLeft="38dp"
+        android:layout_below="@id/emply_textview"
         />
     <ImageView
         android:layout_width="75dp"
@@ -30,7 +36,8 @@
         android:id="@+id/activity_main_isfavorite_picture"
         android:src="@drawable/mymusic_icon_favorite_highlight"
         android:layout_toRightOf="@id/activity_main_downmusic_picture"
-        android:layout_marginLeft="38dp"/>
+        android:layout_marginLeft="38dp"
+        android:layout_below="@id/emply_textview"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,7 +53,7 @@
         android:text="下载音乐"
         android:layout_below="@id/activity_main_downmusic_picture"
         android:layout_toRightOf="@id/activity_main_localmusic_text"
-        android:layout_marginLeft="60dp"
+        android:layout_marginLeft="57dp"
         />
     <TextView
         android:layout_width="wrap_content"
